@@ -1,0 +1,262 @@
+/* Styles communs pour le back-office */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+}
+
+body {
+    padding-top: 76px; /* Height of navbar + some padding */
+    background-color: #f8f9fa;
+}
+
+.dashboard-header {
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.required::after {
+    content: "*";
+    color: red;
+    margin-left: 4px;
+}
+
+/* Style pour les tableaux */
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Style pour les formulaires */
+.form-control, .form-select {
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Style pour les cartes */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    padding: 1.25rem 1.5rem;
+}
+
+/* Style pour les boutons d'action */
+.btn {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    margin: 0 0.25rem;
+}
+
+.btn-action-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+    border: none;
+}
+
+/* Style pour les messages d'alerte */
+.alert {
+    border-radius: 8px;
+    border: none;
+    padding: 1rem 1.5rem;
+}
+
+/* Style pour la barre de navigation */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    padding: 1rem 0;
+    background: #0d6efd;
+    z-index: 1030;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.navbar-dark {
+    background: #0d6efd;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+    color: white !important;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white !important;
+    border-radius: 4px;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Style pour le pied de page */
+.footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .table-responsive {
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-action {
+        margin-bottom: 0.5rem;
+        display: block;
+        width: 100%;
+    }
+
+    .btn-action-group {
+        flex-direction: column;
+    }
+}
+
+/* Utilitaires */
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Styles pour les formulaires de filtres */
+.filter-form {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-section {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Style pour les badges de statut */
+.badge-promotion {
+    background-color: #198754;
+    color: white;
+    padding: 0.35em 0.65em;
+    border-radius: 0.25rem;
+}
+
+.badge-expired {
+    background-color: #dc3545;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tableaux */
+.table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Dashboard cards */
+.dashboard-stat {
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.dashboard-stat.primary {
+    background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+}
+
+.dashboard-stat.success {
+    background: linear-gradient(135deg, var(--success-color), #0f5132);
+}
+
+.dashboard-stat.warning {
+    background: linear-gradient(135deg, #ffc107, #cc9a06);
+}

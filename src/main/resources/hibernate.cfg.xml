@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuration de la base de données -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/ticket_vol</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">root</property>
+        
+        <!-- Configuration du dialecte SQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
+        <!-- Configuration du pool de connexions -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        
+        <!-- Configuration des options Hibernate -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">validate</property>
+        
+        <!-- Mapping des entités -->
+        <mapping class="com.mg.model.Vol"/>
+        <mapping class="com.mg.model.Ville"/>
+        <mapping class="com.mg.model.Avion"/>
+        <mapping class="com.mg.model.Place"/>
+        <mapping class="com.mg.model.TypeSiege"/>
+        <mapping class="com.mg.model.Reservation"/>
+        <mapping class="com.mg.model.Utilisateur"/>
+        <mapping class="com.mg.model.Parametre"/>
+        <mapping class="com.mg.model.PlaceVol"/>
+        <mapping class="com.mg.model.Promotion"/>
+    </session-factory>
+</hibernate-configuration>
