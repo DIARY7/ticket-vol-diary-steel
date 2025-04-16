@@ -1,3 +1,9 @@
+<%@ page import="com.mg.model.Utilisateur" %><%--
+  Created by IntelliJ IDEA.
+  User: kenny
+  Date: 19/02/2025
+  Time: 13:45
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

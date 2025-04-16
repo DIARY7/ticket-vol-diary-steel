@@ -39,6 +39,7 @@ public class ReservationController {
     public ModelView reservationForm(@Param(name = "volId") int volId) throws Exception {
         ModelView mv = new ModelView("/front-office/reservations/form.jsp");
         Vol vol = volService.findById(Vol.class, volId, "placeVols");
+        System.out.println("La valeur du vol est = "+vol);
         if (vol != null && reservationService.isReservationAllowed(vol)) {
             mv.addObject("vol", vol);
         } else {
