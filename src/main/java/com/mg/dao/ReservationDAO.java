@@ -24,7 +24,6 @@ public class ReservationDAO extends BaseDao<Reservation> {
                     Parametre.class);
             Parametre param = paramQuery.setMaxResults(1).uniqueResult();
 
-            System.out.println("Le valeur du parametre est = "+param);
             if (param == null) {
                 return false;
             }
