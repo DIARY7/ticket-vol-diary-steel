@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.mg.model.Utilisateur" %>
 <html>
 <head>
     <title>Profile Details</title>

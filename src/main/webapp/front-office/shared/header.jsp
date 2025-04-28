@@ -3,13 +3,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/global.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/liste.css">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
         <script>
             function toggleMobileMenu() {
                 const mobileMenu = document.getElementById('mobileMenu');
                 mobileMenu.classList.toggle('hidden');
             }
         </script>
-        <nav class="bg-white backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <nav class="neon-nav sticky top-0 z-50">
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center h-16">
                     <a href="${pageContext.request.contextPath}/vols/search"
@@ -23,29 +25,31 @@
 
                     <div class="hidden md:flex items-center space-x-6">
                         <a href="${pageContext.request.contextPath}/vols/search"
-                            class="px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-all duration-200">
+                            class="px-3 py-2 rounded-lg  hover:bg-gray-100 hover:text-blue-600 transition-all duration-200">
                             Rechercher
                         </a>
                         <a href="${pageContext.request.contextPath}/mes-reservations"
-                            class="px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-all duration-200">
+                            class="px-3 py-2 rounded-lg  hover:bg-gray-100 hover:text-blue-600 transition-all duration-200">
                             Mes Réservations
                         </a>
                         <a href="${pageContext.request.contextPath}/profil"
-                           class="px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-all duration-200">
+                           class="px-3 py-2 rounded-lg  hover:bg-gray-100 hover:text-blue-600 transition-all duration-200">
                             Profil
                         </a>
                         <% if (session.getAttribute("user") !=null) { %>
                             <div class="flex items-center space-x-4 p-4">
                                 <div class="flex gap-2 p-2 ">
                                     <img src="${pageContext.request.contextPath}/img/<%=((Utilisateur)session.getAttribute("user")).getPdp()%>" class="bg-red-500 w-8 h-8 rounded-full" alt="Avatar">
-                                    <p class="text-black">
+                                    <p class="text-white">
                                         <%=((Utilisateur)session.getAttribute("user")).getPseudo()%>
                                     </p>
                                 </div>
-                                <a href="${pageContext.request.contextPath}/logout"
-                                    class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200">
-                                    Déconnexion
-                                </a>
+                                <button>
+                                    <a href="${pageContext.request.contextPath}/logout"
+                                        class="" >
+                                        Déconnexion
+                                    </a>
+                                </button>
                             </div>
                             <% } %>
                     </div>
@@ -71,10 +75,13 @@
                             Mes Réservations
                         </a>
                         <% if (session.getAttribute("user") !=null) { %>
-                            <a href="${pageContext.request.contextPath}/logout"
+                            <button>
+                                <a href="${pageContext.request.contextPath}/logout"
                                 class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-all duration-200">
-                                Déconnexion
-                            </a>
+                                    Déconnexion
+                                </a>
+                            </button>
+                            
                             <% } %>
                     </div>
                 </div>

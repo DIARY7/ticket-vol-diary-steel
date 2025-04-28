@@ -11,14 +11,14 @@
                     <jsp:include page="../shared/header.jsp" />
                 </head>
 
-                <body class="h-full">
+                <body class="page-transition">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                         <div class="space-y-8">
                             <!-- En-tête -->
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Mes Réservations</h1>
-                                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Gérez vos réservations de
+                                    <h1 class="text-2xl font-bold text-white-900 dark:text-white">Mes Réservations</h1>
+                                    <p class="mt-2 text-sm text-white-600 dark:text-gray-400">Gérez vos réservations de
                                         vols</p>
                                 </div>
                                 <a href="<%= request.getContextPath() %>/vols/search" class="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm
@@ -68,37 +68,29 @@
                                                     aucune réservation en cours.</p>
                                             </div>
                                             <% } else { %>
-                                                <div
-                                                    class="bg-white dark:bg-gray-800 shadow-sm rounded-xl overflow-hidden">
+                                                <div class="neon-card overflow-hidden">
                                                     <div class="overflow-x-auto">
-                                                        <table
-                                                            class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                                        <table class="min-w-full">
+                                                            <thead>
                                                                 <tr>
-                                                                    <th scope="col"
-                                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                                    <th scope="col">
                                                                         Vol
                                                                     </th>
-                                                                    <th scope="col"
-                                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                                    <th scope="col">
                                                                         Date
                                                                     </th>
 
-                                                                    <th scope="col"
-                                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                                    <th scope="col">
                                                                         Effectifs
                                                                     </th>
 
-                                                                    <th scope="col"
-                                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                                    <th scope="col">
                                                                         Type de siège
                                                                     </th>
-                                                                    <th scope="col"
-                                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                                    <th scope="col">
                                                                         Places
                                                                     </th>
-                                                                    <th scope="col"
-                                                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                                                    <th scope="col">
                                                                         Prix total
                                                                     </th>
                                                                     <th scope="col"
@@ -108,7 +100,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody
-                                                                class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-800">
+                                                                class="divide-y">
                                                                 <% SimpleDateFormat dateFormat=new
                                                                     SimpleDateFormat("dd/MM/yyyy HH:mm"); for
                                                                     (Reservation reservation : reservations) { String
@@ -140,12 +132,10 @@
                                                                     reservation.getPrix() : 0.0; boolean
                                                                     estValide=(reservation.getValider() !=null) &&
                                                                     reservation.getValider(); %>
-                                                                    <tr
-                                                                        class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
-                                                                        <td
-                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                                                                    <tr>
+                                                                        <td>
                                                                             <div class="flex items-center">
-                                                                                <svg class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500 mr-2"
+                                                                                <svg class="flex-shrink-0 h-5 w-5 text-white-400 dark:text-gray-500 mr-2"
                                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                                     viewBox="0 0 20 20"
                                                                                     fill="currentColor">
@@ -156,12 +146,10 @@
                                                                                 <%= villeDepart %> → <%= villeArrive %>
                                                                             </div>
                                                                         </td>
-                                                                        <td
-                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                                                                        <td>
                                                                             <%= dateDepart %>
                                                                         </td>
-                                                                        <td
-                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                                                                        <td>
                                                                             <div class="flex flex-col">
                                                                                 <span>
                                                                                     <%= reservation.getNombreAdultes()
@@ -176,22 +164,19 @@
                                                                                     <% } %>
                                                                             </div>
                                                                         </td>
-                                                                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                                                        <td>
                                                                             <span
                                                                                 class="inline-flex items-center px-2.5 py-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100">
                                                                                 <%= typeSiege %>
                                                                             </span>
                                                                         </td>
-                                                                        <td
-                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                                                                        <td>
                                                                             <%= nombrePlaces %>
                                                                         </td>
-                                                                        <td
-                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                                                                        <td>
                                                                             <%= prixTotal %> Ar
                                                                         </td>
-                                                                        <td
-                                                                            class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                                                                        <td>
                                                                             <a href="http://localhost:8081/api/reservations/<%=reservation.getId()%>/pdf"
                                                                                 class="inline-flex items-center px-3 py-1 border border-transparent rounded-md
                                                                                 text-sm font-medium text-white bg-green-600 hover:bg-green-700 
