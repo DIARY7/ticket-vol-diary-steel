@@ -75,12 +75,13 @@
                             Mes Réservations
                         </a>
                         <% if (session.getAttribute("user") !=null) { %>
-                            <button>
+                            
                                 <a href="${pageContext.request.contextPath}/logout"
                                 class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-all duration-200">
+                                <button>
                                     Déconnexion
+                                </button>
                                 </a>
-                            </button>
                             
                             <% } %>
                     </div>

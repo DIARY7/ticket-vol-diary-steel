@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    bonjour
+    Landing page
 </body>
 
 </html>
