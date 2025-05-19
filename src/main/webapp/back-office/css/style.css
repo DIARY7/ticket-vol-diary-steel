@@ -3,7 +3,7 @@
     --primary-color: #0d6efd;
     --secondary-color: #6c757d;
     --success-color: #198754;
-    --danger-color: #dc3545;
+    --danger-color: #dc3545; 
 }
 
 body {
@@ -39,7 +39,7 @@ body {
 
 .form-control:focus, .form-select:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(253, 13, 13, 0.25);
 }
 
 /* Style pour les cartes */
@@ -82,7 +82,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+    background: linear-gradient(135deg, var(--primary-color), #ca0a7d) !important;
     border: none;
 }
 
@@ -97,7 +97,7 @@ body {
 .navbar {
     box-shadow: 0 2px 8px rgba(0,0,0,.2);
     padding: 1rem 0;
-    background: #0d6efd;
+    background: #fd0d1d;
     z-index: 1030;
     position: fixed;
     top: 0;
@@ -107,7 +107,7 @@ body {
 }
 
 .navbar-dark {
-    background: #0d6efd;
+    background: #fd0d1d;
 }
 
 .navbar-brand {
