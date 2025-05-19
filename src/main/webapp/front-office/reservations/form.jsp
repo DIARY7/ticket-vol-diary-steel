@@ -8,12 +8,12 @@
             <jsp:include page="../shared/header.jsp" />
         </head>
 
-        <body class="h-full">
+        <body class="cover">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="space-y-8">
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Réservation de vol</h1>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Complétez les informations ci-dessous
+                        <h1 class="text-2xl font-bold text-white dark:text-white">Réservation de vol</h1>
+                        <p class="mt-2 text-sm text-gray-400 dark:text-gray-400">Complétez les informations ci-dessous
                             pour réserver
                             votre vol</p>
                     </div>
@@ -38,23 +38,23 @@
                         <% } %>
                             <% Vol vol=(Vol) request.getAttribute("vol"); if (vol !=null) { %>
                                 <!-- Détails du vol -->
-                                <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl overflow-hidden">
+                                <div class="neon-card dark:bg-gray-800 shadow-sm rounded-xl overflow-hidden">
                                     <div class="px-6 py-5">
-                                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Détails du
+                                        <h3 class="text-lg font-medium text-white dark:text-white mb-4">Détails du
                                             vol</h3>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div class="space-y-3">
                                                 <div>
-                                                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                                                    <p class="text-sm font-medium text-white dark:text-gray-500">
                                                         Départ</p>
-                                                    <p class="mt-1 text-base text-gray-900 dark:text-white">
+                                                    <p class="mt-1 text-base text-gray-300 dark:text-white">
                                                         <%= vol.getVilleDepart().getNom() %>
                                                     </p>
                                                 </div>
                                                 <div>
                                                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
                                                         Arrivée</p>
-                                                    <p class="mt-1 text-base text-gray-900 dark:text-white">
+                                                    <p class="mt-1 text-base text-gray-300 dark:text-white">
                                                         <%= vol.getVilleArrive().getNom() %>
                                                     </p>
                                                 </div>
@@ -63,7 +63,7 @@
                                                 <div>
                                                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Date
                                                         et heure</p>
-                                                    <p class="mt-1 text-base text-gray-900 dark:text-white">
+                                                    <p class="mt-1 text-base text-gray-300 dark:text-white">
                                                         <%= new
                                                             java.text.SimpleDateFormat("dd/MM/yyyyHH:mm").format(vol.getDateDepart())
                                                             %>
@@ -79,7 +79,7 @@
                                                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100">
                                                                     <%= placeVol.getPlace().getTypeSiege().getDesignation() %>
                                                                 </span>
-                                                                <span class="text-gray-900 dark:text-white">
+                                                                <span class="text-gray-300 dark:text-white">
                                                                     <%= placeVol.getPrix() %> AR
                                                                 </span>
                                                             </div>
