@@ -14,9 +14,12 @@ import com.mg.model.*;
 import com.mg.service.ReservationService;
 import com.mg.service.VolService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 import com.mg.service.ParametreService;
 import com.mg.service.PlaceService;
 
+import java.io.IOException;
 import java.util.List;
 
 @AnnotationCtrl
@@ -136,5 +139,15 @@ public class ReservationController {
         }
         modelView.setRedirect("/ticket-vol/mes-reservations?error=Erreur lors de l'annulation de la réservation");
         return modelView;
+    }
+
+    @GET
+    @Url("/reservations-csv")
+    public void exportToCSV(HttpServletResponse response) {
+        try {
+            reservationService.exportReservationsToCSV(response);
+        } catch (IOException e) {
+            throw new RuntimeException("Erreur lors de l'export CSV", e);
+        }
     }
 }
