@@ -5,6 +5,7 @@ import mg.itu.prom16.annotation.AuthCtrl;
 import mg.itu.prom16.annotation.GET;
 import mg.itu.prom16.annotation.POST;
 import mg.itu.prom16.annotation.Param;
+import mg.itu.prom16.annotation.RestApi;
 import mg.itu.prom16.annotation.Url;
 import mg.itu.prom16.utilitaire.CustomSession;
 import mg.itu.prom16.utilitaire.ModelView;
@@ -14,9 +15,12 @@ import com.mg.model.*;
 import com.mg.service.ReservationService;
 import com.mg.service.VolService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 import com.mg.service.ParametreService;
 import com.mg.service.PlaceService;
 
+import java.io.IOException;
 import java.util.List;
 
 @AnnotationCtrl
@@ -136,5 +140,16 @@ public class ReservationController {
         }
         modelView.setRedirect("/ticket-vol/mes-reservations?error=Erreur lors de l'annulation de la réservation");
         return modelView;
+    }
+
+    @GET
+    @RestApi
+    @Url("/reservations-csv")
+    public void exportToCSV(HttpServletResponse response,int idUser) {
+        try {
+            reservationService.exportReservationsToCSV(response,idUser);
+        } catch (IOException e) {
+            throw new RuntimeException("Erreur lors de l'export CSV", e);
+        }
     }
 }
