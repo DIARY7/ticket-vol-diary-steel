@@ -5,6 +5,7 @@ import mg.itu.prom16.annotation.AuthCtrl;
 import mg.itu.prom16.annotation.GET;
 import mg.itu.prom16.annotation.POST;
 import mg.itu.prom16.annotation.Param;
+import mg.itu.prom16.annotation.RestApi;
 import mg.itu.prom16.annotation.Url;
 import mg.itu.prom16.utilitaire.CustomSession;
 import mg.itu.prom16.utilitaire.ModelView;
@@ -142,10 +143,11 @@ public class ReservationController {
     }
 
     @GET
+    @RestApi
     @Url("/reservations-csv")
-    public void exportToCSV(HttpServletResponse response) {
+    public void exportToCSV(HttpServletResponse response,int idUser) {
         try {
-            reservationService.exportReservationsToCSV(response);
+            reservationService.exportReservationsToCSV(response,idUser);
         } catch (IOException e) {
             throw new RuntimeException("Erreur lors de l'export CSV", e);
         }
