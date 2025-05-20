@@ -14,14 +14,21 @@ import com.mg.DTO.VolDTO;
 import com.mg.model.*;
 import com.mg.service.ReservationService;
 import com.mg.service.VolService;
+import com.mg.utils.ConfigLoader;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.mg.service.ParametreService;
 import com.mg.service.PlaceService;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
+
 
 @AnnotationCtrl
 @AuthCtrl (roles = {"client"})
@@ -118,8 +125,10 @@ public class ReservationController {
         Utilisateur utilisateur = (Utilisateur) session.get("user");
 
         List<Reservation> reservations = reservationService.findByUtilisateur(utilisateur.getId());
+        String serverIp = ConfigLoader.getServerIp("server.properties"); 
 
         mv.addObject("reservations", reservations);
+        mv.addObject("serverIp", serverIp);
 
         return mv;
     }
@@ -143,13 +152,48 @@ public class ReservationController {
     }
 
     @GET
-    @RestApi
-    @Url("/reservations-csv")
-    public void exportToCSV(HttpServletResponse response,int idUser) {
+    @Url("/reservation-pdf")
+    public void exportToPdf(int idReservation) {
+        String serverIp = ConfigLoader.getServerIp("server.properties");
+        if (serverIp == null) {
+            System.err.println("Impossible de charger l'adresse IP du serveur.");
+            return;
+        }
+
+        String url = serverIp + "/api/reservations/" + idReservation + "/pdf";
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
         try {
-            reservationService.exportReservationsToCSV(response,idUser);
-        } catch (IOException e) {
-            throw new RuntimeException("Erreur lors de l'export CSV", e);
+            HttpResponse<byte[]> response = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
+
+            if (response.statusCode() == 200) {
+                byte[] pdfData = response.body();
+                try (FileOutputStream fos = new FileOutputStream("reservation-" + idReservation + ".pdf")) {
+                    fos.write(pdfData);
+                }
+
+            } else {
+                System.err.println("Erreur HTTP : " + response.statusCode());
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
+    // @GET
+    // @RestApi
+    // @Url("/reservations-csv")
+    // public void exportToCSV(HttpServletResponse response,int idUser) {
+    //     try {
+    //         reservationService.exportReservationsToCSV(response,idUser);
+    //     } catch (IOException e) {
+    //         throw new RuntimeException("Erreur lors de l'export CSV", e);
+    //     }
+    // }
 }

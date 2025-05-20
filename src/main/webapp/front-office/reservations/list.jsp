@@ -2,7 +2,7 @@
     <%@ page import="java.util.*" %>
         <%@ page import="com.mg.model.*" %>
             <%@ page import="java.text.SimpleDateFormat" %>
-
+            <% String serverIp = (String) request.getAttribute("serverIp"); %>
                 <!DOCTYPE html>
                 <html>
 
@@ -72,7 +72,7 @@
                                             <% } else { %>
                                                 <div class="neon-card overflow-hidden">
                                                     
-                                                    <a href="http://localhost:8081/api/reservations/<%=reservations.get(0).getUtilisateur().getId() %>/csv"
+                                                    <a href="http://<%= serverIp %>/api/reservations/<%=reservations.get(0).getUtilisateur().getId() %>/csv"
                                                         class="inline-flex items-center px-3 py-1 border border-transparent rounded-md
                                                         text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 
                                                         focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 
@@ -197,7 +197,7 @@
                                                                             <%= prixTotal %> Ar
                                                                         </td>
                                                                         <td style="padding: 0px;">
-                                                                            <a href="http://localhost:8081/api/reservations/<%=reservation.getId()%>/pdf"
+                                                                            <a href="http://<%= serverIp %>/api/reservations/<%=reservation.getId()%>/pdf"
                                                                                 class="inline-flex items-center px-3 py-1 border border-transparent rounded-md
                                                                                 text-sm font-medium text-white bg-green-600 hover:bg-green-700 
                                                                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 
